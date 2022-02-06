@@ -85,7 +85,7 @@ class CConsumer final : public CProcess {
 
  private:
   void get_data() const {
-    std::chrono::time_point<std::chrono::steady_clock> const start = std::chrono::steady_clock::now();
+    std::chrono::time_point<std::chrono::steady_clock> const start{std::chrono::steady_clock::now()};
     char control_variable{0};
     for (auto const& item : frame) {
       control_variable^=item;
