@@ -31,8 +31,8 @@ class CProducer final : public CProcess {
       frame(frame_) {
   }
 
-  void produce(std::chrono::seconds const seconds) const {
-    std::chrono::time_point<std::chrono::steady_clock> const finish{std::chrono::steady_clock::now() + seconds};
+  void produce(std::chrono::seconds const duration) const {
+    std::chrono::time_point<std::chrono::steady_clock> const finish{std::chrono::steady_clock::now() + duration};
     while (std::chrono::steady_clock::now() < finish) {
       /*while (ready)
         std::this_thread::sleep_for(std::chrono::seconds(1));*/
@@ -69,8 +69,8 @@ class CConsumer final : public CProcess {
       frame(frame_) {
   }
 
-  void consume(std::chrono::seconds const seconds) const {
-    std::chrono::time_point<std::chrono::steady_clock> const finish{std::chrono::steady_clock::now() + seconds};
+  void consume(std::chrono::seconds const duration) const {
+    std::chrono::time_point<std::chrono::steady_clock> const finish{std::chrono::steady_clock::now() + duration};
     while (std::chrono::steady_clock::now() < finish) {
       /*while (!ready)
         std::this_thread::sleep_for(std::chrono::seconds(1));*/
@@ -85,7 +85,7 @@ class CConsumer final : public CProcess {
 
  private:
   void get_data() const {
-    std::chrono::time_point<std::chrono::steady_clock> const start = std::chrono::steady_clock::now();
+    std::chrono::time_point<std::chrono::steady_clock> const start{std::chrono::steady_clock::now()};
     char control_variable{0};
     for (auto const& item : frame) {
       control_variable^=item;
