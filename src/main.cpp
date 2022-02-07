@@ -1,6 +1,5 @@
 #include <iostream>
 #include <thread>
-#include <climits>
 
 constexpr size_t frame_size = 16 * 1024 * 1024;
 std::array<char, frame_size> frame;
