@@ -1,9 +1,6 @@
 #pragma once
 
-<<<<<<< HEAD
-=======
 #include <climits>
->>>>>>> Producer-Consumer
 #include <mutex>
 #include <condition_variable>
 
